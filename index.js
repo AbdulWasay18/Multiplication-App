@@ -6,7 +6,9 @@ let inputEl = document.getElementById("input");
 let scoreEl =document.getElementById("score");
 let score = JSON.parse (localStorage.getItem("score"));
 questionEl.innerText = `What is ${num1} multiply by ${num2} ?`;
-
+//if (!score){
+  //  score=0;
+//}
 let correctAns = num1 * num2;
 formEl.addEventListener("submit", () => {
     let userAns = +inputEl.value;
@@ -19,9 +21,7 @@ formEl.addEventListener("submit", () => {
     }
 });
     
-if (!score){
-    score = 0;
-}
+
 scoreEl.innerText= `score ${score}`;
     
 function updatelocalstorage(){

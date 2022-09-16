@@ -4,15 +4,26 @@ let questionEl = document.getElementById("question");
 let formEl = document.getElementById("form");
 let inputEl = document.getElementById("input");
 let scoreEl =document.getElementById("score");
-let score = 0;
+let score = JSON.parse (localStorage.getItem("score"));
 questionEl.innerText = `What is ${num1} multiply by ${num2} ?`;
 
 let correctAns = num1 * num2;
 formEl.addEventListener("submit", () => {
     let userAns = +inputEl.value;
-    if (userAns == correctAns) {
+    if (userAns==correctAns){
         score++;
-
-    } else {
+        updatelocalstorage();
+    }else {
         score--;
-})
+        updatelocalstorage();
+    }
+});
+    
+if (!score){
+    score = 0;
+}
+scoreEl.innerText= `score ${score}`;
+    
+function updatelocalstorage(){
+    localStorage.setItem("score",JSON.stringify(score))
+};

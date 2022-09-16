@@ -3,27 +3,24 @@ let num2 = Math.ceil(Math.random() * 10);
 let questionEl = document.getElementById("question");
 let formEl = document.getElementById("form");
 let inputEl = document.getElementById("input");
-let scoreEl =document.getElementById("score");
-let score = JSON.parse (localStorage.getItem("score"));
+let scoreEl = document.getElementById("score");
+let score = JSON.parse(localStorage.getItem("score"));
 questionEl.innerText = `What is ${num1} multiply by ${num2} ?`;
-//if (!score){
-  //  score=0;
-//}
 let correctAns = num1 * num2;
 formEl.addEventListener("submit", () => {
     let userAns = +inputEl.value;
-    if (userAns==correctAns){
+    if (userAns == correctAns) {
         score++;
         updatelocalstorage();
-    }else {
+    } else {
         score--;
         updatelocalstorage();
     }
 });
-    
 
-scoreEl.innerText= `score ${score}`;
-    
-function updatelocalstorage(){
-    localStorage.setItem("score",JSON.stringify(score))
+
+scoreEl.innerText = `score ${score}`;
+
+function updatelocalstorage() {
+    localStorage.setItem("score", JSON.stringify(score))
 };
